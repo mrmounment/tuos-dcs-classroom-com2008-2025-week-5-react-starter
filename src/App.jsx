@@ -1,20 +1,21 @@
-import { useState } from 'react'
-import './App.css'
+import Greeting from './Greeting.jsx';
+import { useState } from 'react';
+import NewButton from './NewButton.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [show, setShow] = useState(false);
+    return (
+        <div>
+            <h1>Hello there</h1>
+            <p>This is a paragraph</p>
+            <Greeting />
+            <button onClick={ () => setShow(!show)}>
+                {show ? 'Hide' : 'Show'} Info
+            </button>
+            {show && <p>This is some extra information</p>}
+            <NewButton />
+        </div>
 
-  function countOnClick() {
-    setCount((prevCount) => prevCount + 1);
-  }
-
-  return (
-    <div className="card">
-      <button onClick={countOnClick}>
-        count is {count}
-      </button>
-    </div>
-  )
+    );
 }
-
 export default App;
